@@ -25,6 +25,8 @@ The reference Raman frequencies for pristine, unstrained graphene are [2]
 \omega_{2D}^0 = 2678.6~\mathrm{cm^{-1}}.
 ```
 
+These values are for graphene in hBN encapsulation, which is the relevant reference for our samples.
+
 Measured Raman shifts are defined relative to these reference values as
 
 ```math

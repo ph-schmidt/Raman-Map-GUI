@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it as below."
+title: "Raman-Map-GUI: Interactive Analysis and Visualization of Graphene Raman Maps"
+authors:
+  - family-names: Schmidt
+    given-names: Philipp
+  - family-names: Ouaj
+    given-names: Taoufiq
+  - family-names: Stampfer
+    given-names: Christoph
+year: 2026
+version: 1.0
+type: software
+url: "https://github.com/ph-schmidt/Raman-Map-GUI"
+license: GPL-3.0

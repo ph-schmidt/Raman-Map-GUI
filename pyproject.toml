@@ -1,0 +1,65 @@
+[project]
+name = "ramangui"
+version = "1.0.0"
+description = "Interactive Analysis and Visualization of Graphene Raman Maps"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [
+  { name = "Philipp Schmidt", email = "raman_gui@ph-schmidt.de" }
+]
+keywords = ["Raman", "graphene", "spectroscopy", "GUI", "analysis"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Intended Audience :: Science/Research",
+  "Topic :: Scientific/Engineering :: Physics"
+]
+requires-python = ">=3.12"
+dependencies = [
+    "easysettings>=4.0",
+    "matplotlib>=3.10",
+    "numpy>=2.2",
+    "pyfiglet>=1.0.4",
+    "pyqt6>=6.8",
+    "pyqtdarktheme>=2.1",
+    "pyqtgraph>=0.13",
+    "scipy>=1.14",
+]
+
+[project.scripts]
+ramangui = "ramangui.main:start"
+
+[build-system]
+requires = ["uv_build>=0.10.6,<0.11.0"]
+build-backend = "uv_build"
+
+[tool.setuptools.package-data]
+ramangui = ["*.ico"]
+
+[dependency-groups]
+dev = [
+    "black>=26.1.0",
+    "ruff>=0.15.2",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+exclude = [
+    "src/ramangui/settings_gui.py",
+]
+
+[tool.ruff.lint]
+select = ["D", "E", "F", "W", "I", "B", "UP"]
+ignore = ["E203", "E266", "E501"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = false
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.black]
+line-length = 100
+target-version = ["py312"]
+

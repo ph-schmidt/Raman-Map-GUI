@@ -462,7 +462,7 @@ class DataObject:
         hb = 1.055e-34  # h_bar in Js
         hbeV = hb / q  # h_bar in eVs
         vF = 1.15e6  # vF in m/s
-        alpha = np.arctan(0.7)
+        alpha = np.arctan(0.4)
         beta = np.arctan(2.2)
         if settings.get("StrainType") == "uniaxial":  # uniaxial strain
             denom = 23.5

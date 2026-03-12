@@ -77,6 +77,7 @@ class MainApp(QtWidgets.QMainWindow):
         self.ui.menuHelp.addAction(about)
 
         self.ui.comboBox_Plot.currentIndexChanged.connect(self.update_view)
+        self.ui.comboBox_Plot.activated.connect(self.dropdown_selected)
         self.ui.buttonNewFit.clicked.connect(self.initiateNewFit)
         self.ui.buttonResetROI.clicked.connect(self.resetROI)
 
@@ -95,6 +96,41 @@ class MainApp(QtWidgets.QMainWindow):
         self.build_dropdown()
         self.ui.menuExport.setEnabled(False)
         logger.info("Application UI initialized. Ready for project selection.")
+
+    def dropdown_selected(self, index):
+        """Handle selection changes in the quantity dropdown menu.
+
+        This method is triggered when the user selects a new entry in the
+        QComboBox containing available quantities. The selected quantity is
+        logged for debugging purposes.
+
+        If the selected quantity corresponds to ``"doping"`` or ``"strain"``,
+        an informational message box is displayed to inform the user that the
+        extracted values are approximate and should only be interpreted as
+        rough estimates. Users are referred to the project documentation on
+        GitHub for further details on the methodology and its limitations.
+
+        Parameters
+        ----------
+        index : int
+            Index of the selected entry in the dropdown menu.
+        """
+        logger.debug("New quantity selected: %s", self.keys[index])
+        if self.keys[index] in ["doping", "strain"]:
+            msg = QtWidgets.QMessageBox()
+            msg.setIcon(QtWidgets.QMessageBox.Icon.Information)
+            msg.setText("Doping and Strain Estimation")
+            msg.setInformativeText(
+                "The extracted doping and strain values are approximate and should "
+                "only be interpreted as rough estimates. The implemented method is "
+                "intended for qualitative analysis and may not provide quantitatively "
+                "accurate results for all datasets.\n\n"
+                "Please consult the software documentation on GitHub for details "
+                "about the method, assumptions, and limitations."
+            )
+            msg.setWindowTitle("Doping and Strain")
+            msg.setStandardButtons(QtWidgets.QMessageBox.StandardButton.Ok)
+            msg.exec()
 
     def build_dropdown(self):
         """Build the plot selection dropdown and associated metadata lists.
@@ -635,7 +671,9 @@ class MainApp(QtWidgets.QMainWindow):
                 logger.exception("Error while loading map.")
         elif choise.text() == "Online Help":
             logger.info("Opening online help in web browser.")
-            webbrowser.open_new_tab("https://github.com/ph-schmidt/Raman-Map-GUI?tab=readme-ov-file")
+            webbrowser.open_new_tab(
+                "https://github.com/ph-schmidt/Raman-Map-GUI?tab=readme-ov-file"
+            )
         elif choise.text() == "About":
             logger.debug("Showing About dialog.")
             msg = QtWidgets.QMessageBox()
@@ -1175,7 +1213,7 @@ def run_main():
     logging.getLogger("matplotlib").setLevel(logging.WARNING)
 
     print("")
-    f = Figlet(font="slant")
+    f = Figlet(font="slant", width=100)
     print(f.renderText("Raman-Map-GUI"))
 
     logger.info("Starting application...")

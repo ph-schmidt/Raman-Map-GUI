@@ -1,7 +1,12 @@
 # Extraction of Charge Carrier Density and Strain
 
-The positions of the **G** and **2D** Raman modes are influenced simultaneously by strain and doping, which makes a direct interpretation ambiguous.  
-This ambiguity can be resolved by exploiting the fact that strain and doping shift the Raman peaks along different directions in the $(\omega_G,\omega_{2D})$ plane.
+The positions of the **G** and **2D** Raman modes are influenced simultaneously by strain, doping and screening, which makes a direct interpretation ambiguous.
+
+Screening in principle also influences only the 2D mode, and for undoped graphene, depends on the dielectric environment [6].
+
+Here, we consider only the case of graphene encapsulated in hBN, i.e. no screening contribution and consider only strain and doping.
+
+This ambiguity in strain and doping can be resolved by exploiting the fact that strain and doping shift the Raman peaks along different directions in the $(\omega_G,\omega_{2D})$ plane, and by knowing the reference peak positions for pristine, unstrained and undoped graphene.
 
 ---
 
@@ -9,7 +14,7 @@ This ambiguity can be resolved by exploiting the fact that strain and doping shi
 
 Strain and doping induce approximately linear but distinct Raman shifts in the  
 $(\omega_G,\omega_{2D})$ space.  
-These directions are characterized by two experimentally determined angles [1]:
+These directions are characterized by two experimentally determined angles, extracted for graphene on $SiO_2$ [1]:
 
 ```math
 \alpha = \arctan(0.7), \qquad
@@ -18,14 +23,18 @@ These directions are characterized by two experimentally determined angles [1]:
 
 Here, $\alpha$ corresponds to the doping axis and $\beta$ to the strain axis.
 
-The reference Raman frequencies for pristine, unstrained graphene are [2]
+For graphene encapsulated in hBN, the angle associated with doping is different [7]. This is due to a sensitivity of the doping-induced shift to the dielectric environment [unpublished].
+
+```math
+\alpha = \arctan(0.4), \qquad
+```
+
+The reference Raman frequencies for pristine, unstrained graphene (graphene encapsulated in hBN) are [2]
 
 ```math
 \omega_G^0 = 1581.6~\mathrm{cm^{-1}}, \qquad
 \omega_{2D}^0 = 2678.6~\mathrm{cm^{-1}}.
 ```
-
-These values are for graphene in hBN encapsulation, which is the relevant reference for our samples.
 
 Measured Raman shifts are defined relative to these reference values as
 
@@ -153,3 +162,7 @@ The quantity $\frac{\partial\omega_G}{\partial\varepsilon}$ depends on the strai
    **Tailoring mechanically tunable strain fields in graphene**,  
    *Nano Letters* **18**(3), 1707–1713 (2018).  
    https://doi.org/10.1021/acs.nanolett.7b04774
+
+6. https://journals.aps.org/prx/abstract/10.1103/PhysRevX.15.021043
+
+7. https://journals.aps.org/prb/abstract/10.1103/PhysRevB.107.075420

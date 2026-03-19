@@ -14,7 +14,7 @@ This ambiguity in strain and doping can be resolved by exploiting the fact that 
 
 Strain and doping induce approximately linear but distinct Raman shifts in the  
 $(\omega_G,\omega_{2D})$ space.  
-These directions are characterized by two experimentally determined angles, extracted for graphene on $SiO_2$ [1]:
+These directions are characterized by two experimentally determined angles, extracted for graphene on $\mathrm{SiO_2}$ [1]:
 
 ```math
 \alpha = \arctan(0.7), \qquad
@@ -23,11 +23,13 @@ These directions are characterized by two experimentally determined angles, extr
 
 Here, $\alpha$ corresponds to the doping axis and $\beta$ to the strain axis.
 
-For graphene encapsulated in hBN, the angle associated with doping is different [7]. This is due to a sensitivity of the doping-induced shift to the dielectric environment [unpublished].
+For graphene encapsulated in hBN, the orientation of the doping axis differs from that on $\mathrm{SiO_2}$ [7], reflecting the sensitivity of doping-induced Raman shifts to the surrounding dielectric environment. In this case, the doping axis is characterized by
 
 ```math
-\alpha = \arctan(0.4), \qquad
+\alpha = \arctan(0.4),
 ```
+
+which is used in this software package.
 
 The reference Raman frequencies for pristine, unstrained graphene (graphene encapsulated in hBN) are [2]
 
@@ -163,6 +165,12 @@ The quantity $\frac{\partial\omega_G}{\partial\varepsilon}$ depends on the strai
    *Nano Letters* **18**(3), 1707–1713 (2018).  
    https://doi.org/10.1021/acs.nanolett.7b04774
 
-6. https://journals.aps.org/prx/abstract/10.1103/PhysRevX.15.021043
+6. L. Moczko, S. Reichardt, A. Singh, X. Zhang, E. Jouaiti, L. E. Parra López, J. L. P. Wolff, A. R. Moghe, E. Lorchat, R. Singh, K. Watanabe, T. Taniguchi, H. Majjad, M. Romeo, A. Gloppe, L. Wirtz, and S. Berciaud,  
+   **Symmetry-Dependent Dielectric Screening of Optical Phonons in Monolayer Graphene**,  
+   *Physical Review X* **15**(2), 021043 (2025).  
+   https://doi.org/10.1103/PhysRevX.15.021043
 
-7. https://journals.aps.org/prb/abstract/10.1103/PhysRevB.107.075420
+7. J. Sonntag, K. Watanabe, T. Taniguchi, B. Beschoten, and C. Stampfer,  
+   **Charge carrier density dependent Raman spectra of graphene encapsulated in hexagonal boron nitride**,  
+   *Physical Review B* **107**(7), 075420 (2023).  
+   https://doi.org/10.1103/PhysRevB.107.075420

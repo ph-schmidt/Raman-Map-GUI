@@ -44,7 +44,7 @@
      <x>10</x>
      <y>20</y>
      <width>251</width>
-     <height>161</height>
+     <height>121</height>
     </rect>
    </property>
    <property name="title">
@@ -56,66 +56,11 @@
       <x>10</x>
       <y>20</y>
       <width>231</width>
-      <height>131</height>
+      <height>91</height>
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="1">
-      <widget class="QComboBox" name="comboBox_StrainType">
-       <property name="currentIndex">
-        <number>0</number>
-       </property>
-       <item>
-        <property name="text">
-         <string>uniaxial</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>biaxial</string>
-        </property>
-       </item>
-      </widget>
-     </item>
      <item row="1" column="1">
-      <widget class="QComboBox" name="comboBox_ScanDirection">
-       <item>
-        <property name="text">
-         <string>Up</string>
-        </property>
-       </item>
-       <item>
-        <property name="text">
-         <string>Down</string>
-        </property>
-       </item>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_52">
-       <property name="text">
-        <string>Laser Wavelength</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_29">
-       <property name="text">
-        <string>Use Fit Mask</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="toolTip">
-        <string>What was the scan direction (slow axis)?</string>
-       </property>
-       <property name="text">
-        <string>Scan Direction</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
       <widget class="QComboBox" name="comboBox_Mask">
        <item>
         <property name="text">
@@ -129,33 +74,55 @@
        </item>
       </widget>
      </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label">
-       <property name="toolTip">
-        <string>Select the kind of strain</string>
-       </property>
-       <property name="whatsThis">
-        <string/>
-       </property>
-       <property name="accessibleDescription">
-        <string/>
-       </property>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit_LaserWavelength">
        <property name="text">
-        <string>Strain Type</string>
+        <string>532</string>
        </property>
       </widget>
      </item>
-     <item row="3" column="2">
+     <item row="0" column="1">
+      <widget class="QComboBox" name="comboBox_ScanDirection">
+       <item>
+        <property name="text">
+         <string>Up</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Down</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_52">
+       <property name="text">
+        <string>Laser Wavelength</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
       <widget class="QLabel" name="label_53">
        <property name="text">
         <string>  nm  </string>
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="lineEdit_LaserWavelength">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="toolTip">
+        <string>What was the scan direction (slow axis)?</string>
+       </property>
        <property name="text">
-        <string>532</string>
+        <string>Scan Direction</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_29">
+       <property name="text">
+        <string>Use Fit Mask</string>
        </property>
       </widget>
      </item>
@@ -765,6 +732,92 @@
       <widget class="QLineEdit" name="lineEdit_PeakWidth_4">
        <property name="text">
         <string>15</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>160</y>
+     <width>161</width>
+     <height>111</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>Strain and Doping</string>
+   </property>
+   <widget class="QWidget" name="gridLayoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>141</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_6">
+     <item row="0" column="1">
+      <widget class="QComboBox" name="comboBox_StrainType">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <item>
+        <property name="text">
+         <string>uniaxial</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>biaxial</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_58">
+       <property name="text">
+        <string>Strain Slope</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_StrainSlope">
+       <property name="text">
+        <string>2.2</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_61">
+       <property name="toolTip">
+        <string>Select the kind of strain</string>
+       </property>
+       <property name="whatsThis">
+        <string/>
+       </property>
+       <property name="accessibleDescription">
+        <string/>
+       </property>
+       <property name="text">
+        <string>Strain Type</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Doping Slope</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit_DopingSlope">
+       <property name="text">
+        <string>0.4</string>
        </property>
       </widget>
      </item>

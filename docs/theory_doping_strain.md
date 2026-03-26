@@ -31,6 +31,8 @@ For graphene encapsulated in hBN, the orientation of the doping axis differs fro
 
 which is used in this software package.
 
+*Note that the slopes of the doping and strain axes can be adjusted in the program’s fit settings.*
+
 The reference Raman frequencies for pristine, unstrained graphene (graphene encapsulated in hBN) are [2]
 
 ```math

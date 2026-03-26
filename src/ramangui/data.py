@@ -462,8 +462,10 @@ class DataObject:
         hb = 1.055e-34  # h_bar in Js
         hbeV = hb / q  # h_bar in eVs
         vF = 1.15e6  # vF in m/s
-        alpha = np.arctan(0.4)
-        beta = np.arctan(2.2)
+        slope_strain = self.settings.get("Slope_Strain")
+        slope_doping = self.settings.get("Slope_Doping")
+        alpha = np.arctan(slope_doping)  # np.arctan(0.4)
+        beta = np.arctan(slope_strain)  # np.arctan(2.2)
         if settings.get("StrainType") == "uniaxial":  # uniaxial strain
             denom = 23.5
         else:  # biaxial strain

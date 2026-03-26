@@ -15,6 +15,60 @@ from easysettings import EasySettings
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from PyQt6 import QtGui
 
+DEFAULT_SETTINGS = {
+    "StrainType": "uniaxial",  # uniaxial or biaxial
+    "Slope_Strain": 2.2,
+    "Slope_Doping": 0.4,
+    "ScanDirection": 0,
+    "Gamma_G_0": 15,
+    "Gamma_2D_0": 25,
+    "Gamma_D_0": 10,
+    "omega_G_0": 1585,
+    "omega_2D_0": 2675,
+    "omega_D_0": 1350,
+    "spec_width_G": 120,
+    "spec_width_2D": 170,
+    "spec_width_D": 100,
+    "omega_2D_maxError": 3,
+    "area_2D_min": 50,
+    "area_2D_max": 1e7,
+    "Gamma_G_min": 3,
+    "Gamma_G_max": 70,
+    "Gamma_2D_min": 7,
+    "Gamma_2D_max": 110,
+    "UseFitMask": 1,
+    "LaserWavelength": 532,
+    "4_P_mode": False,
+    "omega_peak_1": 2650,
+    "omega_peak_2": 2685,
+    "omega_peak_3": 2700,
+    "omega_peak_4": 2720,
+    "Gamma_peak_1": 20,
+    "Gamma_peak_2": 20,
+    "Gamma_peak_3": 20,
+    "Gamma_peak_4": 20,
+}
+
+
+def restore_default_settings(settings):
+    """Reset a settings object to the application's default values.
+
+    Parameters
+    ----------
+    settings : easysettings.EasySettings
+        Settings instance to modify in-place.
+
+    Returns:
+    -------
+    easysettings.EasySettings
+        The same settings object, after defaults have been written and saved.
+    """
+    for key, value in DEFAULT_SETTINGS.items():
+        settings.set(key, value)
+
+    settings.save()
+    return settings
+
 
 def create_settings(file):
     """Create a settings file and populate it with default values.
@@ -34,49 +88,36 @@ def create_settings(file):
     return settings
 
 
-def restore_default_settings(settings):
-    """Reset a settings object to the application's default values.
+def ensure_settings_defaults(settings, logger=None):
+    """Ensure all required settings exist; fill missing ones with defaults.
 
     Parameters
     ----------
     settings : easysettings.EasySettings
         Settings instance to modify in-place.
+    logger : logging.Logger, optional
+        Logger used to report inserted keys.
 
     Returns:
     -------
     easysettings.EasySettings
-        The same settings object, after defaults have been written and saved.
+        The same settings object, after missing defaults have been written.
     """
-    settings.set("StrainType", "uniaxial")  # uniaxial or biaxial
-    settings.set("ScanDirection", 0)
-    settings.set("Gamma_G_0", 15)
-    settings.set("Gamma_2D_0", 25)
-    settings.set("Gamma_D_0", 10)
-    settings.set("omega_G_0", 1585)
-    settings.set("omega_2D_0", 2675)
-    settings.set("omega_D_0", 1350)
-    settings.set("spec_width_G", 120)
-    settings.set("spec_width_2D", 170)
-    settings.set("spec_width_D", 100)
-    settings.set("omega_2D_maxError", 3)
-    settings.set("area_2D_min", 50)
-    settings.set("area_2D_max", 1e7)
-    settings.set("Gamma_G_min", 3)
-    settings.set("Gamma_G_max", 70)
-    settings.set("Gamma_2D_min", 7)
-    settings.set("Gamma_2D_max", 110)
-    settings.set("UseFitMask", 1)
-    settings.set("LaserWavelength", 532)
-    settings.set("4_P_mode", False)
-    settings.set("omega_peak_1", 2650)
-    settings.set("omega_peak_2", 2685)
-    settings.set("omega_peak_3", 2700)
-    settings.set("omega_peak_4", 2720)
-    settings.set("Gamma_peak_1", 20)
-    settings.set("Gamma_peak_2", 20)
-    settings.set("Gamma_peak_3", 20)
-    settings.set("Gamma_peak_4", 20)
-    settings.save()
+    missing_keys = []
+
+    for key, default_value in DEFAULT_SETTINGS.items():
+        if settings.get(key) == "":
+            settings.set(key, default_value)
+            missing_keys.append(key)
+
+    if missing_keys:
+        settings.save()
+        if logger is not None:
+            logger.info("Inserted missing default settings: %s", missing_keys)
+    else:
+        if logger is not None:
+            logger.debug("No missing settings found.")
+
     return settings
 
 

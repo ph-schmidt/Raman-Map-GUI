@@ -125,6 +125,8 @@ class MainApp(QtWidgets.QMainWindow):
                 "only be interpreted as rough estimates. The implemented method is "
                 "intended for qualitative analysis and may not provide quantitatively "
                 "accurate results for all datasets.\n\n"
+                "The parameters used for the computation can be adjusted in the settings "
+                "to better match your specific experimental conditions.\n\n"
                 "Please consult the software documentation on GitHub for details "
                 "about the method, assumptions, and limitations."
             )
@@ -835,6 +837,7 @@ class MainApp(QtWidgets.QMainWindow):
                 settings_path = path + "/Settings/settings.conf"
                 logger.debug("Loading settings from: %s", settings_path)
                 settings = EasySettings(settings_path)
+                settings = utils.ensure_settings_defaults(settings, logger)
                 self.ui.menuSettings.setEnabled(True)
                 self.setWindowTitle("Interactive Raman Analysis  -  " + path)
                 logger.info("Project opened successfully.")

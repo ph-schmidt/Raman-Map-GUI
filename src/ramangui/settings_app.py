@@ -77,6 +77,10 @@ class SettingsApp(PyQt.QtWidgets.QDialog):
                 self.ui.comboBox_StrainType.setCurrentIndex(1)
 
             self.ui.comboBox_ScanDirection.setCurrentIndex(settings.get("ScanDirection"))
+
+            self.ui.lineEdit_StrainSlope.setText(str(settings.get("Slope_Strain")))
+            self.ui.lineEdit_DopingSlope.setText(str(settings.get("Slope_Doping")))
+
             self.ui.lineEdit_Gamma_G_0.setText(str(settings.get("Gamma_G_0")))
             self.ui.lineEdit_Gamma_2D_0.setText(str(settings.get("Gamma_2D_0")))
             self.ui.lineEdit_Gamma_D_0.setText(str(settings.get("Gamma_D_0")))
@@ -126,6 +130,10 @@ class SettingsApp(PyQt.QtWidgets.QDialog):
                 strain_type_map.get(self.ui.comboBox_StrainType.currentIndex(), "uniaxial"),
             )
             settings.set("ScanDirection", int(self.ui.comboBox_ScanDirection.currentIndex()))
+
+            settings.set("Slope_Strain", float(self.ui.lineEdit_StrainSlope.text()))
+            settings.set("Slope_Doping", float(self.ui.lineEdit_DopingSlope.text()))
+
             settings.set("Gamma_G_0", float(self.ui.lineEdit_Gamma_G_0.text()))
             settings.set("Gamma_2D_0", float(self.ui.lineEdit_Gamma_2D_0.text()))
             settings.set("Gamma_D_0", float(self.ui.lineEdit_Gamma_D_0.text()))
